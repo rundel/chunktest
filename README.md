@@ -27,27 +27,10 @@ test_that("some more successes just to pad things out", {
 ```
 
 ```{testthat bad}
+plus <- function(x, y) rep(1,length(x)) + rep(1, length(y))
+
 test_that("one plus one is two", {
   expect_equal(plus(1, 1), 2)
-})
-
-test_that("two plus two is four", {
-  expect_equal(plus(1:2, 1:2), c(2,4))
-  expect_equal(plus(2:3, 2:3), c(4,6))
-  expect_equal(plus(4, 4), 8)
-  expect_equal(plus(5, 5), 10)
-})
-
-test_that("two plus two is four", {
-  expect_equal(plus(2, 2), 4)
-})
-
-test_that("two plus two is four", {
-  expect_equal(plus(2, 2), 4)
-})
-
-test_that("two plus two is four", {
-  expect_equal(plus(2, 2), 4)
 })
 
 test_that("two plus two is four", {
@@ -55,3 +38,48 @@ test_that("two plus two is four", {
 })
 ```
 ````
+
+Should knit to something like the following:
+``` r
+test_that("one plus one is two", {
+  expect_equal(1 + 1, 2)
+})
+
+test_that("you can skip tests if needed", {
+  skip("This tests hasn't been written yet")
+})
+
+test_that("some tests have warnings", {
+  expect_equal(log(-1), NaN)
+})
+
+test_that("some more successes just to pad things out", {
+  expect_true(TRUE)
+  expect_false(FALSE)
+})
+```
+
+    ## ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
+    ## [ Ok: 4 | Skipped: 1 | Warnings: 1 | Failed: 0 ]
+
+``` r
+plus <- function(x, y) rep(1,length(x)) + rep(1, length(y))
+
+test_that("one plus one is two", {
+  expect_equal(plus(1, 1), 2)
+})
+
+test_that("two plus two is four", {
+  expect_equal(plus(2, 2), 4)
+})
+```
+
+    ## ── 1. Failure: two plus two is four (@unnamed-chunk-1#8)  ──────────────────────────────────────────
+    ##   plus(2, 2) not equal to 4.
+    ##   1/1 mismatches
+    ##   [1] 2 - 4 == -2
+    ## 
+    ## ══ Results ═════════════════════════════════════════════════════════════════════════════════════════
+    ## [ Ok: 1 | Skipped: 0 | Warnings: 0 | Failed: 1 ]
+
+
