@@ -11,3 +11,10 @@ Description: What the package does (one paragraph).
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    knitr,
+    testthat,
+    cli,
+    fansi
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
