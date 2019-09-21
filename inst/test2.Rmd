@@ -5,8 +5,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-chunktest::init(use_crayon = FALSE)
+chunktest::init()
 ```
+
+```{r}
+plus <- function(x, y) rep(1,length(x)) + rep(1, length(y))
+```
+
 
 ```{testthat test1}
 test_that("one plus one is two", {
@@ -28,13 +33,35 @@ test_that("some more successes just to pad things out", {
 ```
 
 ```{testthat}
-plus <- function(x, y) rep(1,length(x)) + rep(1, length(y))
-
 test_that("one plus one is two", {
   expect_equal(plus(1, 1), 2)
 })
 
 test_that("two plus two is four", {
+  expect_equal(plus(1:2, 1:2), c(2,4))
+  expect_equal(plus(2:3, 2:3), c(4,6))
+  expect_equal(plus(4, 4), 8)
+  expect_equal(plus(5, 5), 10)
+})
+
+test_that("two plus two is four", {
   expect_equal(plus(2, 2), 4)
 })
+
+test_that("two plus two is four", {
+  expect_equal(plus(2, 2), 4)
+})
+
+test_that("two plus two is four", {
+  expect_equal(plus(2, 2), 4)
+})
+
+test_that("two plus two is four", {
+  expect_equal(plus(2, 2), 4)
+})
+```
+
+```{r}
+ls()
+cli::rule(center="test", col="red")
 ```
